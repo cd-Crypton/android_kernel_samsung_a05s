@@ -1805,8 +1805,8 @@ static int mmc_sd_hw_reset(struct mmc_host *host)
 static const struct mmc_bus_ops mmc_sd_ops = {
 	.remove = mmc_sd_remove,
 	.detect = mmc_sd_detect,
-	.runtime_suspend = mmc_sd_runtime_suspend,
-	.runtime_resume = mmc_sd_runtime_resume,
+	//.runtime_suspend = mmc_sd_runtime_suspend,
+	//.runtime_resume = mmc_sd_runtime_resume,
 	.suspend = mmc_sd_suspend,
 	.resume = mmc_sd_resume,
 	.alive = mmc_sd_alive,
@@ -1884,6 +1884,8 @@ err:
 	mmc_detach_bus(host);
 
 	pr_err("%s: error %d whilst initialising SD card\n",
+		mmc_hostname(host), err);
+	ST_LOG("%s: error %d whilst initialising SD card\n",
 		mmc_hostname(host), err);
 
 	trace_android_vh_mmc_attach_sd(host, ocr, err);

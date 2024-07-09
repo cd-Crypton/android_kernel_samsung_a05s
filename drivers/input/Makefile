@@ -24,8 +24,14 @@ obj-$(CONFIG_INPUT_MOUSE)	+= mouse/
 obj-$(CONFIG_INPUT_JOYSTICK)	+= joystick/
 obj-$(CONFIG_INPUT_TABLET)	+= tablet/
 obj-$(CONFIG_INPUT_TOUCHSCREEN)	+= touchscreen/
+obj-m							+= goodix/
+obj-m							+= chipone_fp/
+obj-m							+= fpc/
 obj-$(CONFIG_INPUT_MISC)	+= misc/
 
 obj-$(CONFIG_INPUT_APMPOWER)	+= apm-power.o
 
 obj-$(CONFIG_RMI4_CORE)		+= rmi4/
+obj-m		+= sar/sx933x/sx933x.o
+obj-m		+= sar/hx9031as/hx9031as.o
+obj-m           += sar/hx9031as/sensors_class.o

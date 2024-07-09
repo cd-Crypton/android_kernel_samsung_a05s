@@ -538,8 +538,6 @@ static int acm_notify_serial_state(struct f_acm *acm)
 
 	spin_lock(&acm->lock);
 	if (acm->notify_req) {
-		dev_dbg(&cdev->gadget->dev, "acm ttyGS%d serial state %04x\n",
-			acm->port_num, acm->serial_state);
 		serial_state = cpu_to_le16(acm->serial_state);
 		status = acm_cdc_notify(acm, USB_CDC_NOTIFY_SERIAL_STATE,
 				0, &serial_state, sizeof(acm->serial_state));

@@ -43,6 +43,8 @@ menuconfig TYPEC
 	  Connector Class API (Documentation/driver-api/usb/typec.rst)
 	  <https://www.kernel.org/doc/html/latest/driver-api/usb/typec.html>
 	  and ABI (Documentation/ABI/testing/sysfs-class-typec).
+	  
+source "drivers/usb/typec/tcpc/Kconfig"
 
 if TYPEC
 

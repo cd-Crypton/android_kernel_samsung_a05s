@@ -471,15 +471,12 @@ int __spi_register_driver(struct module *owner, struct spi_driver *sdrv)
 				of_name++;
 			else
 				of_name = of_id->compatible;
-
 			if (sdrv->id_table) {
 				const struct spi_device_id *spi_id;
-
 				for (spi_id = sdrv->id_table; spi_id->name[0];
 				     spi_id++)
 					if (strcmp(spi_id->name, of_name) == 0)
 						break;
-
 				if (spi_id->name[0])
 					continue;
 			} else {
@@ -487,7 +484,7 @@ int __spi_register_driver(struct module *owner, struct spi_driver *sdrv)
 					continue;
 			}
 
-			pr_warn("SPI driver %s has no spi_device_id for %s\n",
+			pr_err("SPI driver %s has no spi_device_id for %s\n",
 				sdrv->driver.name, of_id->compatible);
 		}
 	}

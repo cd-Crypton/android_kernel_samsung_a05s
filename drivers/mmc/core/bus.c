@@ -206,7 +206,7 @@ static int mmc_runtime_suspend(struct device *dev)
 	struct mmc_card *card = mmc_dev_to_card(dev);
 	struct mmc_host *host = card->host;
 
-	return host->bus_ops->runtime_suspend(host);
+	return 0;
 }
 
 static int mmc_runtime_resume(struct device *dev)
@@ -214,7 +214,7 @@ static int mmc_runtime_resume(struct device *dev)
 	struct mmc_card *card = mmc_dev_to_card(dev);
 	struct mmc_host *host = card->host;
 
-	return host->bus_ops->runtime_resume(host);
+	return 0;
 }
 #endif /* !CONFIG_PM */
 
@@ -367,6 +367,15 @@ int mmc_add_card(struct mmc_card *card)
 			mmc_card_hs400es(card) ? "Enhanced strobe " : "",
 			mmc_card_ddr52(card) ? "DDR " : "",
 			uhs_bus_speed_mode, type, card->rca);
+		ST_LOG("%s: new %s%s%s%s%s%s card at address %04x\n",
+			mmc_hostname(card->host),
+			mmc_card_uhs(card) ? "ultra high speed " :
+			(mmc_card_hs(card) ? "high speed " : ""),
+			mmc_card_hs400(card) ? "HS400 " :
+			(mmc_card_hs200(card) ? "HS200 " : ""),
+			mmc_card_hs400es(card) ? "Enhanced strobe " : "",
+			mmc_card_ddr52(card) ? "DDR " : "",
+			uhs_bus_speed_mode, type, card->rca);
 	}
 
 #ifdef CONFIG_DEBUG_FS
@@ -403,6 +412,8 @@ void mmc_remove_card(struct mmc_card *card)
 				mmc_hostname(card->host));
 		} else {
 			pr_info("%s: card %04x removed\n",
+				mmc_hostname(card->host), card->rca);
+			ST_LOG("%s: card %04x removed\n",
 				mmc_hostname(card->host), card->rca);
 		}
 		device_del(&card->dev);

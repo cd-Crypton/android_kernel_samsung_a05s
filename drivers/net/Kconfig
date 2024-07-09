@@ -613,3 +613,6 @@ config NETDEV_LEGACY_INIT
 	  symbol, everything else no longer needs it.
 
 endif # NETDEVICES
+
+source "drivers/net/dropdump/Kconfig"
+source "drivers/net/drb/Kconfig"
