@@ -33,7 +33,7 @@
  * 4. Optionally match some line and column info of the style :123:456, etc.
  * 5. Match ': warning:'
  *
- * Ex: msm-kernel/drivers/firmware/qcom_scm.c:929:11: warning: unused variable 'unused' [-Wunused-variable]
+ * Ex: ${KERNEL_DIR}/drivers/firmware/qcom_scm.c:929:11: warning: unused variable 'unused' [-Wunused-variable]
  *     (           1              )(   2   )3(   4  )(   5   )
  */
 #define REGEXPR \

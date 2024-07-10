@@ -52,7 +52,7 @@ function build_defconfig_fragments() {
 			return
 		fi
 		GKI_BUILD_CONFIG=common/build.config.gki-debug.aarch64
-		GKI_GKI_BUILD_CONFIG_FRAGMENT=msm-kernel/build.config.gki_consolidate.aarch64
+		GKI_GKI_BUILD_CONFIG_FRAGMENT=${KERNEL_DIR}/build.config.gki_consolidate.aarch64
 		# ABI comparison isn't applicable on consolidate variant
 		unset ABI_DEFINITION
 		apply_defconfig_fragment ${KERNEL_DIR}/arch/${ARCH}/configs/consolidate.fragment consolidate_defconfig
