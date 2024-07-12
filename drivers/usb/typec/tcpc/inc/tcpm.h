@@ -1448,6 +1448,11 @@ static uint8_t tcpm_get_pd_connect_state(struct tcpc_device *tcpc)
 	return TCPM_ERROR_NO_IMPLEMENT;
 }
 
+static uint8_t tcpm_get_pd_connect_type(struct tcpc_device *tcpc)
+{
+	return TCPM_ERROR_NO_IMPLEMENT;
+}
+
 static inline int tcpm_inquire_cable_inform(
 	struct tcpc_device *tcpc, uint32_t *vdos)
 {
