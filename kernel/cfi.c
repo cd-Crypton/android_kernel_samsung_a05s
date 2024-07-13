@@ -362,3 +362,8 @@ void cfi_failure_handler(void *data, void *ptr, void *vtable)
 	handle_cfi_failure(ptr);
 }
 EXPORT_SYMBOL(cfi_failure_handler);
+
+void __cfi_check_fail(void *data, void *ptr)
+{
+	handle_cfi_failure(ptr);
+}
